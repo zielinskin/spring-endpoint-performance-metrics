@@ -1,4 +1,4 @@
-# spring-boot-e2e-example
+# spring-endpoint-performance-metrics
 
 To use the api directly, go to http://localhost:8080/api
 
