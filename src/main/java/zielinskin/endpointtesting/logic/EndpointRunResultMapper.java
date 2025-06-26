@@ -1,10 +1,10 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.springframework.stereotype.Component;
-import zielinskin.springboote2e.data.EndpointConfigurationEntity;
-import zielinskin.springboote2e.data.EndpointRunResultEntity;
-import zielinskin.springboote2e.data.EndpointRunResultIndividualRequestEntity;
-import zielinskin.springboote2e.view.EndpointRunResult;
+import zielinskin.endpointtesting.data.EndpointConfigurationEntity;
+import zielinskin.endpointtesting.data.EndpointRunResultEntity;
+import zielinskin.endpointtesting.data.EndpointRunResultIndividualRequestEntity;
+import zielinskin.endpointtesting.view.EndpointRunResult;
 
 import java.util.Set;
 import java.util.stream.Collectors;

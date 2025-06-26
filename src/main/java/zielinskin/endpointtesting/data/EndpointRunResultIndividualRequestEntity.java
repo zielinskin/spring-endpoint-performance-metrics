@@ -1,4 +1,4 @@
-package zielinskin.springboote2e.data;
+package zielinskin.endpointtesting.data;
 
 
 import jakarta.persistence.*;

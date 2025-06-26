@@ -1,4 +1,4 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 import org.springframework.web.client.RestTemplate;
-import zielinskin.springboote2e.view.EndpointConfiguration;
-import zielinskin.springboote2e.view.EndpointRunRequest;
-import zielinskin.springboote2e.view.EndpointRunResult;
-import zielinskin.springboote2e.view.EndpointRunResultIndividualRequest;
+import zielinskin.endpointtesting.view.EndpointConfiguration;
+import zielinskin.endpointtesting.view.EndpointRunRequest;
+import zielinskin.endpointtesting.view.EndpointRunResult;
+import zielinskin.endpointtesting.view.EndpointRunResultIndividualRequest;
 
 import java.util.*;
 import java.util.concurrent.*;

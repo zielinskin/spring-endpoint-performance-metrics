@@ -1,10 +1,10 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
-import zielinskin.springboote2e.data.EndpointConfigurationEntity;
-import zielinskin.springboote2e.data.HeaderEntity;
-import zielinskin.springboote2e.view.EndpointConfiguration;
+import zielinskin.endpointtesting.data.EndpointConfigurationEntity;
+import zielinskin.endpointtesting.data.HeaderEntity;
+import zielinskin.endpointtesting.view.EndpointConfiguration;
 
 import java.util.stream.Collectors;
 

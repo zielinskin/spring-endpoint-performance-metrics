@@ -1,7 +1,7 @@
-package zielinskin.springboote2e.web;
+package zielinskin.endpointtesting.web;
 
 import org.springframework.web.bind.annotation.*;
-import zielinskin.springboote2e.logic.CrudService;
+import zielinskin.endpointtesting.logic.CrudService;
 
 import java.util.List;
 

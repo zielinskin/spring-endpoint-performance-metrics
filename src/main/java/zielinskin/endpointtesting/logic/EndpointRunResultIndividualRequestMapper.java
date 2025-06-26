@@ -1,9 +1,9 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import zielinskin.springboote2e.data.EndpointRunResultIndividualRequestEntity;
-import zielinskin.springboote2e.view.EndpointRunResultIndividualRequest;
+import zielinskin.endpointtesting.data.EndpointRunResultIndividualRequestEntity;
+import zielinskin.endpointtesting.view.EndpointRunResultIndividualRequest;
 
 @Component
 public class EndpointRunResultIndividualRequestMapper extends BiMapper<EndpointRunResultIndividualRequestEntity, EndpointRunResultIndividualRequest> {

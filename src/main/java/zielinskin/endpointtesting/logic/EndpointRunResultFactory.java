@@ -1,9 +1,8 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.springframework.stereotype.Component;
-import zielinskin.springboote2e.view.EndpointConfiguration;
-import zielinskin.springboote2e.view.EndpointRunResult;
-import zielinskin.springboote2e.view.EndpointRunResultIndividualRequest;
+import zielinskin.endpointtesting.view.EndpointRunResult;
+import zielinskin.endpointtesting.view.EndpointRunResultIndividualRequest;
 
 import java.util.List;
 

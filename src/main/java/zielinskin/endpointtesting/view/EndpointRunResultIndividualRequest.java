@@ -1,4 +1,4 @@
-package zielinskin.springboote2e.view;
+package zielinskin.endpointtesting.view;
 
 public record EndpointRunResultIndividualRequest(Long requestMs,
                                                  Integer responseCode,

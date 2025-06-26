@@ -1,11 +1,9 @@
-package zielinskin.springboote2e.web;
+package zielinskin.endpointtesting.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import zielinskin.springboote2e.logic.EndpointTestService;
-import zielinskin.springboote2e.view.EndpointRunRequest;
-import zielinskin.springboote2e.view.EndpointRunResult;
+import zielinskin.endpointtesting.logic.EndpointTestService;
+import zielinskin.endpointtesting.view.EndpointRunRequest;
+import zielinskin.endpointtesting.view.EndpointRunResult;
 
 @RestController
 public class EndpointTestController {

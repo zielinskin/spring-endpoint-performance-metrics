@@ -1,4 +1,4 @@
-package zielinskin.springboote2e;
+package zielinskin.endpointtesting;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
 @EntityScan(basePackages={"zielinskin.springboote2e.data"})
-@EnableJpaRepositories(basePackages = {"zielinskin.springboote2e.data"})
+@EnableJpaRepositories(basePackages = {"zielinskin.endpointtesting.data"})
 public class Application implements WebMvcConfigurer {
 
     @Bean

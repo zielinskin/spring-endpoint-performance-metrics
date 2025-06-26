@@ -1,9 +1,9 @@
-package zielinskin.springboote2e.web;
+package zielinskin.endpointtesting.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zielinskin.springboote2e.logic.AbstractCrudService;
-import zielinskin.springboote2e.view.EndpointConfiguration;
+import zielinskin.endpointtesting.logic.AbstractCrudService;
+import zielinskin.endpointtesting.view.EndpointConfiguration;
 
 @RestController
 @RequestMapping("/endpoint-configurations")

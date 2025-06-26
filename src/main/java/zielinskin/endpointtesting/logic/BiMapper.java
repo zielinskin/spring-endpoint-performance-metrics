@@ -1,4 +1,4 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 public abstract class BiMapper<T, V> {
     public abstract V mapToView(T t);

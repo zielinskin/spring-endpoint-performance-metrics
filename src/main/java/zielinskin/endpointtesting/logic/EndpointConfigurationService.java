@@ -1,9 +1,9 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
-import zielinskin.springboote2e.data.EndpointConfigurationEntity;
-import zielinskin.springboote2e.view.EndpointConfiguration;
+import zielinskin.endpointtesting.data.EndpointConfigurationEntity;
+import zielinskin.endpointtesting.view.EndpointConfiguration;
 
 @Service
 public class EndpointConfigurationService extends AbstractCrudService<EndpointConfigurationEntity, EndpointConfiguration, Integer> {

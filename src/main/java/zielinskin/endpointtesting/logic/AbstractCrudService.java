@@ -1,4 +1,4 @@
-package zielinskin.springboote2e.logic;
+package zielinskin.endpointtesting.logic;
 
 
 import jakarta.transaction.Transactional;

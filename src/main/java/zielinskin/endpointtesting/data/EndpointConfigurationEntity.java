@@ -1,10 +1,7 @@
-package zielinskin.springboote2e.data;
+package zielinskin.endpointtesting.data;
 
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.LazyGroup;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.HashSet;
 import java.util.Set;
