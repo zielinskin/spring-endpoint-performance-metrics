@@ -58,4 +58,13 @@ public class Application implements WebMvcConfigurer {
                 .pathsToMatch("/endpoint-configurations/**")
                 .build();
     }
+
+
+    @Bean
+    public GroupedOpenApi runResultsDocket() {
+        return GroupedOpenApi.builder()
+                .group("Endpoint Run Results")
+                .pathsToMatch("/endpoint-run-results/**")
+                .build();
+    }
 }

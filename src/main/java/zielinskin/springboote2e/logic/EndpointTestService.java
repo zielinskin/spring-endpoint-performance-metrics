@@ -10,31 +10,36 @@ import org.springframework.util.StopWatch;
 import org.springframework.web.client.RestTemplate;
 import zielinskin.springboote2e.view.EndpointConfiguration;
 import zielinskin.springboote2e.view.EndpointRunRequest;
-import zielinskin.springboote2e.view.EndpointTestResults;
-import zielinskin.springboote2e.view.RequestResult;
-import zielinskin.springboote2e.web.EndpointTestController;
+import zielinskin.springboote2e.view.EndpointRunResult;
+import zielinskin.springboote2e.view.EndpointRunResultIndividualRequest;
 
 import java.util.*;
 import java.util.concurrent.*;
 
 @Service
 public class EndpointTestService {
-    private static final Logger log = LoggerFactory.getLogger(EndpointTestController.class);
+    private static final Logger log = LoggerFactory.getLogger(EndpointTestService.class);
     private final RestTemplate restTemplate;
     private final EndpointConfigurationService endpointConfigurationService;
+    private final EndpointRunResultService endpointRunResultService;;
+    private final EndpointRunResultFactory endpointRunResultFactory;
 
-    public EndpointTestService(EndpointConfigurationService endpointConfigurationService) {
+    public EndpointTestService(EndpointConfigurationService endpointConfigurationService,
+                               EndpointRunResultService endpointRunResultService,
+                               EndpointRunResultFactory endpointRunResultFactory) {
         this.restTemplate = new RestTemplate();
         this.endpointConfigurationService = endpointConfigurationService;
+        this.endpointRunResultService = endpointRunResultService;
+        this.endpointRunResultFactory = endpointRunResultFactory;
     }
 
-    public EndpointTestResults testEndpoint(EndpointRunRequest testRequest) {
+    public EndpointRunResult testEndpoint(EndpointRunRequest testRequest) {
         EndpointConfiguration endpointConfiguration = endpointConfigurationService.get(testRequest.id());
 
         int defaultRequestsPerThread = testRequest.totalRequests() / testRequest.threads();
         int totalThreadsWithExtraRequest = testRequest.totalRequests() % testRequest.threads();
 
-        List<Callable<List<RequestResult>>> tasks = new ArrayList<>(testRequest.threads());
+        List<Callable<List<EndpointRunResultIndividualRequest>>> tasks = new ArrayList<>(testRequest.threads());
         for (int i = 0; i < testRequest.threads(); i++) {
             if (i < totalThreadsWithExtraRequest) {
                 tasks.add(() ->
@@ -44,7 +49,7 @@ public class EndpointTestService {
                         run(defaultRequestsPerThread, endpointConfiguration));
             }
         }
-        List<RequestResult> results;
+        List<EndpointRunResultIndividualRequest> results;
 
         ExecutorService threadPoolExecutor = Executors.newFixedThreadPool(testRequest.threads());
         try {
@@ -60,27 +65,17 @@ public class EndpointTestService {
             threadPoolExecutor.shutdown();
         }
 
-        return new EndpointTestResults(
-                results.stream()
-                        .mapToLong(RequestResult::requestMs)
-                        .average()
-                        .orElse(0d),
-                results.stream()
-                        .mapToLong(RequestResult::requestMs)
-                        .max()
-                        .orElse(0),
-                results.stream()
-                        .mapToLong(RequestResult::requestMs)
-                        .min()
-                        .orElse(0),
-                (double) results.stream()
-                        .filter(RequestResult::successful)
-                        .count() / (long) results.size() * 100d,
-                results.size());
+        EndpointRunResult result = endpointRunResultFactory.create(null,
+                endpointConfiguration.id(),
+                results);
+
+        result = endpointRunResultService.save(result);
+
+        return result;
     }
 
-    private List<RequestResult> run(Integer timesToRun, EndpointConfiguration testRequest) {
-        List<RequestResult> results = new ArrayList<>();
+    private List<EndpointRunResultIndividualRequest> run(Integer timesToRun, EndpointConfiguration testRequest) {
+        List<EndpointRunResultIndividualRequest> results = new ArrayList<>();
         for (int i = 0; i < timesToRun; i++) {
             StopWatch stopWatch = new StopWatch();
 
@@ -92,7 +87,7 @@ public class EndpointTestService {
                     entity, String.class);
             stopWatch.stop();
 
-            results.add(new RequestResult(
+            results.add(new EndpointRunResultIndividualRequest(
                     stopWatch.getTotalTimeMillis(),
                     responseEntity.getStatusCode().value(),
                     responseEntity.getStatusCode().is2xxSuccessful()));

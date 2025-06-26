@@ -1,17 +1,19 @@
 package zielinskin.springboote2e.logic;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public abstract class AbstractService<T, V, ID> {
+@Transactional
+public abstract class AbstractCrudService<T, V, ID> implements CrudService<V, ID> {
     private final CrudRepository<T, ID> repository;
     private final BiMapper<T, V> mapper;
 
-    public AbstractService(CrudRepository<T, ID> repository, BiMapper<T, V> mapper) {
+    public AbstractCrudService(CrudRepository<T, ID> repository, BiMapper<T, V> mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -20,8 +22,8 @@ public abstract class AbstractService<T, V, ID> {
         repository.deleteById(id);
     }
 
-    public void save(V view) {
-        repository.save(mapper.mapToEntity(view));
+    public V save(V view) {
+        return mapper.mapToView(repository.save(mapper.mapToEntity(view)));
     }
 
     public void save(List<V> views) {

@@ -2,6 +2,8 @@ package zielinskin.springboote2e.data;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.LazyGroup;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.HashSet;
@@ -20,9 +22,16 @@ public class EndpointConfigurationEntity {
     @OneToMany(
             mappedBy = "configuration",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     private Set<HeaderEntity> headers = new HashSet<>();
+
+    @OneToMany(
+            mappedBy = "configuration",
+            cascade = CascadeType.REMOVE
+    )
+    private Set<EndpointRunResultEntity> results = new HashSet<>();
 
     public Integer getId() {
         return id;

@@ -1,14 +1,14 @@
 package zielinskin.springboote2e.web;
 
 import org.springframework.web.bind.annotation.*;
-import zielinskin.springboote2e.logic.AbstractService;
+import zielinskin.springboote2e.logic.CrudService;
 
 import java.util.List;
 
 public abstract class AbstractCrudController<V, ID> {
-    private final AbstractService<?, V, ID> service;
+    private final CrudService<V, ID> service;
 
-    public AbstractCrudController(AbstractService<?, V, ID> service) {
+    public AbstractCrudController(CrudService<V, ID> service) {
         this.service = service;
     }
 
