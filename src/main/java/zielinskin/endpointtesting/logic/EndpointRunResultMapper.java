@@ -23,6 +23,9 @@ public class EndpointRunResultMapper extends BiMapper<EndpointRunResultEntity, E
     @Override
     public EndpointRunResult mapToView(EndpointRunResultEntity entity) {
         return endpointRunResultFactory.create(entity.getId(),
+                entity.getName(),
+                entity.getThreads(),
+                entity.getTotalRequests(),
                 entity.getConfiguration().getId(),
                 entity.getResults().stream()
                         .map(endpointRunResultIndividualRequestMapper::mapToView)
@@ -32,6 +35,11 @@ public class EndpointRunResultMapper extends BiMapper<EndpointRunResultEntity, E
     @Override
     public EndpointRunResultEntity mapToEntity(EndpointRunResult view) {
         EndpointRunResultEntity entity = new EndpointRunResultEntity();
+
+        entity.setId(view.id());
+        entity.setName(view.name());
+        entity.setThreads(view.threads());
+        entity.setTotalRequests(view.totalRequests());
 
         EndpointConfigurationEntity configurationEntity = new EndpointConfigurationEntity();
         configurationEntity.setId(view.configurationId());

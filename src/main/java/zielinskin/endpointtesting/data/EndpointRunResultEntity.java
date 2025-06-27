@@ -11,6 +11,9 @@ public class EndpointRunResultEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
+    private Integer threads;
+    private Integer totalRequests;
 
     @OneToMany(
             mappedBy = "runResult",
@@ -30,6 +33,30 @@ public class EndpointRunResultEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getThreads() {
+        return threads;
+    }
+
+    public void setThreads(Integer threads) {
+        this.threads = threads;
+    }
+
+    public Integer getTotalRequests() {
+        return totalRequests;
+    }
+
+    public void setTotalRequests(Integer totalRequests) {
+        this.totalRequests = totalRequests;
     }
 
     public Set<EndpointRunResultIndividualRequestEntity> getResults() {

@@ -66,6 +66,9 @@ public class EndpointTestService {
         }
 
         EndpointRunResult result = endpointRunResultFactory.create(null,
+                testRequest.name(),
+                testRequest.threads(),
+                testRequest.totalRequests(),
                 endpointConfiguration.id(),
                 results);
 
