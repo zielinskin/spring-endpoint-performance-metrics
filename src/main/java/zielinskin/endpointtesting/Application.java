@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 
 @SpringBootApplication
-@EntityScan(basePackages={"zielinskin.springboote2e.data"})
+@EntityScan(basePackages={"zielinskin.endpointtesting.data"})
 @EnableJpaRepositories(basePackages = {"zielinskin.endpointtesting.data"})
 public class Application implements WebMvcConfigurer {
 
