@@ -12,6 +12,7 @@ public class EndpointConfigurationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String name;
     private String url;
     private String method;
     private String body;
@@ -36,6 +37,14 @@ public class EndpointConfigurationEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUrl() {

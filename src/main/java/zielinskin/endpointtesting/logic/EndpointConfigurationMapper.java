@@ -13,6 +13,7 @@ public class EndpointConfigurationMapper extends BiMapper<EndpointConfigurationE
     @Override
     public EndpointConfiguration mapToView(EndpointConfigurationEntity entity) {
         return new EndpointConfiguration(entity.getId(),
+                entity.getName(),
                 entity.getUrl(),
                 entity.getMethod(),
                 entity.getHeaders().stream()
@@ -30,6 +31,7 @@ public class EndpointConfigurationMapper extends BiMapper<EndpointConfigurationE
         EndpointConfigurationEntity entity = new EndpointConfigurationEntity();
 
         entity.setId(endpointConfiguration.id());
+        entity.setName(endpointConfiguration.name());
         entity.setUrl(endpointConfiguration.url());
         entity.setMethod(endpointConfiguration.method());
         entity.setBody(endpointConfiguration.body());
